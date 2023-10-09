@@ -1,3 +1,4 @@
+import { Auth } from "@/app/components/auth";
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 
 export function getStaticPaths() {

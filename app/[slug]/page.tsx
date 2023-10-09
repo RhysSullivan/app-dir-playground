@@ -1,3 +1,6 @@
+import { Suspense } from "react";
+import { Auth } from "../components/auth";
+
 export const dynamic = "auto";
 
 export default async function Page({ params }: { params: { slug: string } }) {
@@ -18,9 +21,12 @@ export default async function Page({ params }: { params: { slug: string } }) {
       </h1>
       <h2>Slug is {params.slug}</h2>
       {
-        // random number
-        Math.floor(Math.random() * 100)
+        // random number, if we are caching the html it shouldnt change
+        Math.random() * 100000
       }
+      <Suspense fallback={<div>Loading...</div>}>
+        <Auth />
+      </Suspense>
     </main>
   );
 }
